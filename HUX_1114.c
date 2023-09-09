@@ -3,12 +3,9 @@
 #include <math.h>
 #include <stdlib.h>
 
-double calcular_soma(int posicao, int auxPosicao, double soma, int imparZero)
+double calcular_soma(int posicao, int auxPosicao, double soma)
 {
-    if (auxPosicao > posicao)
-    {
-        return soma;
-    }
+    if (auxPosicao > posicao) return soma;
 
     if (auxPosicao % 2 == 0)
     {
@@ -16,13 +13,10 @@ double calcular_soma(int posicao, int auxPosicao, double soma, int imparZero)
     }
     else
     {
-        soma += auxPosicao / pow(4, imparZero);
-        imparZero += 1;
+        soma += auxPosicao / pow(2, auxPosicao - 1);
     }
 
-    auxPosicao += 1;
-
-    return calcular_soma(posicao, auxPosicao, soma, imparZero);
+    return calcular_soma(posicao, auxPosicao + 1, soma);
 }
 
 int main()
@@ -31,7 +25,7 @@ int main()
 
     scanf("%d", &posicao);
 
-    double soma = calcular_soma(posicao, 1, 0, 0);
+    double soma = calcular_soma(posicao, 1, 0);
 
     printf("S: %.2lf", soma);
 
