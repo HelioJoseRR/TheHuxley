@@ -21,17 +21,13 @@ int sequencia(int num1, int contagem)
         num1 = (num1 * 3) + 1;
     }
 
-    contagem++;
-
-    return sequencia(num1, contagem);
+    return sequencia(num1, contagem + 1);
 }
 
 void contar(int num1, int num2, int *resultado)
 {
     if (num1 > num2)
-    {
         return;
-    }
 
     int novoResultado = sequencia(num1, 0);
 
@@ -40,42 +36,37 @@ void contar(int num1, int num2, int *resultado)
         *resultado = novoResultado;
     }
 
-    num1 += 1;
-
-    contar(num1, num2, resultado);
+    contar(num1 + 1, num2, resultado);
 }
 
 void loop()
 {
     int num1, num2;
 
-    int scanUm = scanf("%d", &num1);
-    int scanDois = scanf("%d", &num2);
-
-    int salvar1 = num1;
-    int salvar2 = num2;
-
-    if (num1 > num2)
+    if (scanf("%d %d", &num1, &num2) == EOF)
     {
-        int aux = num1;
-        num1 = num2;
-        num2 = aux;
+        return;
     }
-
-    if (scanUm == 1 && scanDois == 1)
+    else
     {
+        int salvar1 = num1;
+        int salvar2 = num2;
+
+        if (num1 > num2)
+        {
+            int aux = num1;
+            num1 = num2;
+            num2 = aux;
+        }
+
         int resultado = 1;
 
         contar(num1, num2, &resultado);
 
         printf("%d %d %d\n", salvar1, salvar2, resultado);
-    }
-    else
-    {
-        return;
-    }
 
-    loop();
+        loop();
+    }
 }
 
 int main()
