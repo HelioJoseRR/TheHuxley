@@ -1,7 +1,7 @@
 
 # TheHuxley - Ufal
 
-Esse é um repositório com os meus códigos para as questões do site The Huxley utilizado na matéria **Programação 1** do curso de Ciência da Computação.  
+Esse é um repositório com os meus códigos para as questões do site **The Huxley** utilizado na matéria **Programação 1** do curso de Ciência da Computação.  
   
 Linguagem utilizada : **C**
 
